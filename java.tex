@@ -32,6 +32,7 @@
 \end{enumerate}
 
 \section{Hello World}
+\subsection{Hello Java File!}
 HelloYou.java
 
 \begin{verbatim}
@@ -43,7 +44,26 @@ public class HelloYou {
 \end{verbatim}
 \verb|println| is short for ``print line''. It has to be double quotes inside \verb|println|
 
+\subsection{Commenting Code}
+When comments are short we use the single-line syntax: \verb|//|.
 
+When comments are long we use the multi-line syntax: \verb|/*| and \verb|*/|.
+
+\subsection{Semicolons and Whitespace}
+Java does not interpret \textit{whitespace}, the areas of the code without syntax, but humans use whitespace to read code without difficulty.
+
+Java \textbf{does} interpret semicolons. Semicolons are used to mark the end of a statement, one line of code that performs a single task.
+
+Let's contrast statements with the curly brace, \verb|{}|. Curly braces mark the scope of our classes and methods. There are no semicolons at the end of a curly brace.
+
+\subsection{Compilation: Catching Errors}
+with a file called Plankton.java, we could compile it with the terminal command:
+
+\verb|javac Plankton.java|
+
+A successful compilation produces a \verb|.class| file: \verb|Plankton.class|, that we execute with the terminal command:
+
+\verb|java Plankton|
 
 
 
