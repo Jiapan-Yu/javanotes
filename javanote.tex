@@ -103,6 +103,36 @@ System.out.println("Your username is: " + username);
 
 
 \section{Introduction to Classes}
+\subsection{Classes: Syntax}
+The fundamental concept of object-oriented programming is the class. Every program has at least one class
+\begin{verbatim}
+public class Car {
+// scope of Car class starts after curly brace
+
+  public static void main(String[] args) {
+    // scope of main() starts after curly brace
+
+    // program tasks
+
+  }
+  // scope of main() ends after curly brace
+
+}
+// scope of Car class ends after curly brace
+\end{verbatim}
+This example defines a \verb|class| named \verb|Car|. \verb|public| is an \textit{access level modifier} that allows \textbf{other} classes to interact with this class.
+
+\subsection{Classes: Constructors}
+We create objects (instances of a class) using a constructor method. See java.pdf for an example
+
+\subsection{Classes: Instance Fields}
+We'll add associated data to an object by introducing instance variables, or instance fields. Instance fields are the state in our objects. See java.pdf for an example
+
+\subsection{Classes: Constructor Parameters}
+Parameters specify the type and name of data available for reference within a method's scope. See java.pdf for an example
+
+\subsection{Classes: Assigning Values to Instance Fields}
+Now that our constructor has a parameter, we must pass values into the method call. These values become the state of the instance. See java.pdf for an example
 
 
 
