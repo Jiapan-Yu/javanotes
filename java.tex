@@ -1,0 +1,72 @@
+\documentclass[a4paper,12pt]{article}
+
+
+\usepackage[top = .3in,
+            right = .2in,
+            bottom = .3in,
+            left = .2in]{geometry}
+\usepackage[UTF8]{ctex}
+\usepackage{verbatimbox}
+\usepackage{hyperref,xcolor}
+\usepackage{amsmath,amssymb}
+\usepackage{paralist}
+\usepackage{fancyvrb}
+\usepackage{minted}
+\usepackage{lipsum}
+
+
+
+\definecolor{myblue}{rgb}{0.5, 0.0, 1.0}
+\hypersetup{colorlinks=true,urlcolor=myblue,}
+
+\newminted{java}{gobble=0,linenos=false,frame=single,breaklines=true,obeytabs=true,tabsize=2,escapeinside=\#\#}
+\newminted{html}{gobble=0,linenos=false,frame=single,breaklines=true}
+
+\begin{document}
+%\begin{CJK}{UTF8}{gbsn}
+\fontsize{14pt}{15.6pt}
+\selectfont
+
+\begin{enumerate}
+\item Classes: Constructors
+\begin{javacode}
+public class Store {
+  
+  // new method: constructor!
+  public Store() {
+    System.out.println("I am inside the constructor method.");
+  }
+  
+  // main method is where we create instances!
+  public static void main(String[] args) {
+    System.out.println("Start of the main method.");
+    
+    // create the instance below
+    Store lemonadeStand = new Store();
+    // print the instance below
+    System.out.println(lemonadeStand);
+  }
+}
+\end{javacode}
+The constructor, \verb|Store()|, shares a name with the class. We create instances by \textit{calling or invoking} the constructor within \verb|main()|.
+
+Review the order of the printed messages:
+\renewcommand{\labelenumii}{$\diamond$}
+\begin{enumerate}
+\item Running the program invokes \verb|main()|
+
+\item We create an instance so we move from \verb|main()| to \verb|Store()|
+
+\item The code inside \verb|Store()| runs
+
+\item When \verb|Store()| finishes execution, we return to \verb|main()|
+
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+
+%\end{CJK}
+\end{document}
