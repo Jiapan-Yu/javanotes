@@ -29,6 +29,89 @@
 
 \begin{enumerate}
 
+\item Learn Java: Methods Review
+\begin{javacode}
+public class SavingsAccount {
+
+  int balance;
+
+  public SavingsAccount(int initialBalance) {
+    balance = initialBalance;
+  }
+
+  //Check balance:
+  public void checkBalance() {
+    System.out.println("Hello!");
+    System.out.println("Your balance is " + balance + "\n");
+  }
+
+  //Deposit:
+  public void deposit(int amountToDeposit) {
+    int afterDeposit = balance + amountToDeposit;
+    balance = afterDeposit;
+    System.out.println("You just deposited " + amountToDeposit);
+  }
+
+  //Withdrawing:
+  public int withdraw(int amountToWithdraw) {
+    int afterWithdraw = balance - amountToWithdraw;
+    balance = afterWithdraw;
+    System.out.println("You just withdrew " + amountToWithdraw);
+    return amountToWithdraw;
+  }
+
+  public static void main(String[] args) {
+    SavingsAccount savings = new SavingsAccount(2000);
+
+    //Check balance:
+    savings.checkBalance();
+
+    //Withdrawing:
+    savings.withdraw(300);
+    //Check balance:
+    savings.checkBalance();
+
+    //Deposit:
+    savings.deposit(600);
+    //Check balance:
+    savings.checkBalance();
+
+    //Deposit:
+    savings.deposit(600);
+    //Check balance:
+    savings.checkBalance();
+  }
+}
+\end{javacode}
+
+\item The \verb|toString()| Method
+\begin{javacode}
+public class Store {
+  // instance fields
+  String productType;
+  double price;
+  
+  // constructor method
+  public Store(String product, double initialPrice) {
+    productType = product;
+    price = initialPrice;
+  }
+
+  // main method
+  public static void main(String[] args) {
+    Store lemonadeStand = new Store("Lemonade", 3.75);
+    Store cookieShop = new Store("Cookies", 5);
+    System.out.println(lemonadeStand);
+    System.out.println(cookieShop);
+  }
+  	
+  public String toString() {
+    return "This store sells " + productType + " at a price of " + price + ".";
+  }
+}
+\end{javacode}
+solves \verb|System.out.println(lemonadeStand);| only prints something like \verb|Store@6bc7c054|, where Store is the name of the class and 6bc7c054 is its position in memory.
+
 \item Classes: Assigning Values to Instance Fields
 \begin{javacode}
 public class Car {
