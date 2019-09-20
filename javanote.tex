@@ -128,12 +128,61 @@ We create objects (instances of a class) using a constructor method. See java.pd
 \subsection{Classes: Instance Fields}
 We'll add associated data to an object by introducing instance variables, or instance fields. Instance fields are the state in our objects. See java.pdf for an example
 
+Instance Fields are also available inside all methods in the class, since it is in the scope of the whole class.
+
 \subsection{Classes: Constructor Parameters}
 Parameters specify the type and name of data available for reference within a method's scope. See java.pdf for an example
 
 \subsection{Classes: Assigning Values to Instance Fields}
 Now that our constructor has a parameter, we must pass values into the method call. These values become the state of the instance. See java.pdf for an example
 
+
+\section{Methods}
+\subsection{Defining Methods}
+\begin{verbatim}
+public void startEngine() {
+  System.out.println("Starting the car!");
+  System.out.println("Vroom!");
+}
+\end{verbatim}
+The first line, \verb|public void startEngine()|, is the method signature. It gives the program some information about the method:
+\begin{itemize}
+\item \verb|public| means that other classes can access this method
+
+\item The \verb|void| keyword means that there is no specific output from the method (no value is returned)
+
+\item \verb|startEngine()| is the name of the method
+
+\end{itemize}
+
+\subsection{Calling Methods}
+When we add the \verb|startEngine()| method to the \verb|Car| class, it becomes available to use on any \verb|Car| object
+
+\subsection{Reassigning Instance Fields}
+In this codecademy example, \verb|price| is an instance field of type \verb|double|
+\begin{verbatim}
+// increase price method
+public void increasePrice(double priceToAdd){
+  double newPrice = price + priceToAdd;
+  price = newPrice;
+}
+\end{verbatim}
+why not just \verb|price = price + priceToAdd;|? 改成这个编译的时候也没有报错
+
+\subsection{Returns}
+We can use a value outside of the method it was created in if we \textit{return} it from the method.
+\begin{verbatim}
+public int numberOfTires() {
+   int tires = 4;
+   return tires;
+}
+\end{verbatim}
+In past exercises, when creating new methods, we used the keyword \verb|void|. Here, we are replacing \verb|void| with \verb|int|, to signify that the \textit{return type} is an \verb|int|.
+
+\subsection{The toString() Method}
+When we print out Objects, we often see a String that is not very helpful in determining what the Object represents: \verb|Store@6bc7c054|.
+
+See java.pdf for an example
 
 
 \section{Miscellaneous}
