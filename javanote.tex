@@ -210,6 +210,34 @@ Conditional-OR, $\vert\vert$, evaluates to \verb|true| if one or both of the boo
 Logical-NOT, \verb|!|, evaluates to the opposite boolean value to which it is applied.
 
 
+\section{Arrays}
+Array indexes start at 0!
+
+An array holds a fixed number of values of one type. Arrays hold \verb|double|s, \verb|int|s, \verb|boolean|s, or any other primitives. Arrays can also contain \verb|String|s, or any other objects!
+
+\subsection{Creating an Array Explicitly}
+we can declare and initialize in the same line:\\
+\verb|double[] prices = {13.15, 15.87, 14.22, 16.66};|
+
+\subsection{Importing Arrays}
+\begin{verbatim}
+String[] topics = {"Opinion", "Tech", "Science", "Health"};
+System.out.println(topics);
+\end{verbatim}
+will print out \verb|[Ljava.lang.String;@2aae9190|
+
+If we want to have a more descriptive printout of the array itself, we need a \verb|toString()| method that is provided by the \verb|Arrays| package in Java.\\
+\verb|import java.util.Arrays;|
+
+We put this at the top of the file, before we even define the class! Then once again if we print out \verb|Arrays.toString(topics)|, we'll get \verb|[Opinion, Tech, Science, Health]|
+
+\subsection{Creating an Empty Array}
+Empty arrays have to be initialized with a fixed size:\\
+\verb|String[] menuItems = new String[5];|
+
+Once you declare this size, it cannot be changed! This array will always be of size 5, the \verb|length| field (\verb|menuItems.length|) of the array object will be 5.
+
+
 \section{Miscellaneous}
 
 \begin{enumerate}
