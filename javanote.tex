@@ -238,6 +238,102 @@ Empty arrays have to be initialized with a fixed size:\\
 Once you declare this size, it cannot be changed! This array will always be of size 5, the \verb|length| field (\verb|menuItems.length|) of the array object will be 5.
 
 
+\section{ArrayLists}
+When we work with arrays in Java, we've been limited by the fact that once an array is created, it has a fixed size. We can't add or remove elements.
+
+To represent dynamic lists, we can use Java's ArrayLists. ArrayLists allow us to:
+\begin{itemize}
+\item Store elements of the same type (just like arrays)
+
+\item Access elements by index (just like arrays)
+
+\item Add elements
+
+\item Remove elements
+
+\end{itemize}
+
+\verb|import java.util.ArrayList;|
+
+\subsection{Creating ArrayLists}
+\verb|ArrayList<String> babyNames;|
+
+We use angle brackets \verb|<| and \verb|>| to declare the type of the \verb|ArrayList|. These symbols are used for \textit{generics}.
+
+Generics are a Java construct that allows us to define classes and objects as parameters of an \verb|ArrayList|. For this reason, we can't use primitive types in an \verb|ArrayList|:
+\begin{verbatim}
+// This code won't compile:
+ArrayList<int> ages;
+
+// This code will compile:
+ArrayList<Integer> ages;
+\end{verbatim}
+The \verb|<Integer>| generic has to be used in an \verb|ArrayList| instead. You can also use \verb|<Double>| and \verb|<Char>| for types you would normally declare as \verb|double|s or \verb|char|s.
+
+We can initialize to an empty \verb|ArrayList| using the \verb|new| keyword:
+\begin{verbatim}
+// Declaring:
+ArrayList<Integer> ages;
+// Initializing:
+ages = new ArrayList<Integer>();
+
+// Declaring and initializing in one line:
+ArrayList<String> babyNames = new ArrayList<String>();
+\end{verbatim}
+
+
+\subsection{Adding an Item}
+\verb|ArrayList| comes with an \verb|add()| method that takes an argument to add to the end of the \verb|ArrayList|:
+\begin{verbatim}
+ArrayList<String> toDoList = new ArrayList<String>();
+String toDo1 = "Water plants";
+// Add more to-dos here:
+String toDo2 = "feed cat";
+String toDo3 = "walk the dog";
+
+// Add to-dos to toDoList
+toDoList.add(toDo1);
+toDoList.add(toDo2);
+toDoList.add(toDo3);
+\end{verbatim}
+
+To get ArrayList size, we use \verb|size()| method.
+
+\subsection{Accessing an Index}
+For \verb|ArrayList|s, bracket notation won't work. Instead, we use the method \verb|get()| to access an index:
+\begin{verbatim}
+// Print out the toDoList's second item
+System.out.println(toDoList.get(1));
+\end{verbatim}
+
+\subsection{Changing a Value and Removing an Item}
+When we were using arrays, we could rewrite entries by using bracket notation to reassign values.
+
+\verb|ArrayList| has a slightly different way of doing this, using the \verb|set()| method:
+\begin{verbatim}
+ArrayList<String> shoppingCart = new ArrayList<shoppingCart>();
+
+shoppingCart.add("Trench Coat");
+shoppingCart.add("Tweed Houndstooth Hat");
+shoppingCart.add("Magnifying Glass");
+
+shoppingCart.set(0, "Tweed Cape");
+
+// shoppingCart now holds ["Tweed Cape", "Tweed Houndstooth Hat", "Magnifying Glass"]
+\end{verbatim}
+
+To remove the first item of shoppingCart we write:\\
+\verb|shoppingCart.remove(0);| or \verb|shoppingCart.remove("Trench Coat");| (this command removes the FIRST instance of the value ``Trench Coat'')
+
+\subsection{Getting an Item's Index}
+\begin{verbatim}
+// detectives holds ["Holmes", "Poirot", "Marple", "Spade", "Fletcher", 
+// "Conan", "Ramotswe"];
+System.out.println(detectives.indexOf("Fletcher"));
+\end{verbatim}
+This code would print 4
+
+
 \section{Miscellaneous}
 
 \begin{enumerate}
