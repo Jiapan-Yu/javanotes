@@ -128,7 +128,7 @@ We create objects (instances of a class) using a constructor method. See java.pd
 \subsection{Classes: Instance Fields}
 We'll add associated data to an object by introducing instance variables, or instance fields. Instance fields are the state in our objects. See java.pdf for an example
 
-Instance Fields are also available inside all methods in the class, since it is in the scope of the whole class.
+Instance Fields are also available inside all methods {\color{red}(in main method, accessed by instance of the class)} in the class, since it is in the scope of the whole class.
 
 \subsection{Classes: Constructor Parameters}
 Parameters specify the type and name of data available for reference within a method's scope. See java.pdf for an example
@@ -167,7 +167,7 @@ public void increasePrice(double priceToAdd){
   price = newPrice;
 }
 \end{verbatim}
-why not just \verb|price = price + priceToAdd;|? 改成这个编译的时候也没有报错
+why not just \verb|price = price + priceToAdd;|? 改成这个编译也可以
 
 \subsection{Returns}
 We can use a value outside of the method it was created in if we \textit{return} it from the method.
@@ -334,12 +334,41 @@ System.out.println(detectives.indexOf("Fletcher"));
 This code would print 4
 
 
+\section{Loops}
+\subsection{Iterating Over Arrays and ArrayLists}
+Iterate over Arrays
+\begin{verbatim}
+for (int i = 0; i < secretCode.length; i++) {
+  secretCode[i] += 1;
+}
+\end{verbatim}
+
+Iterate over ArrayLists
+\begin{verbatim}
+for (int i = 0; i < secretCode.size(); i++) {
+  int num = secretCode.get(i);
+  secretCode.set(i, num + 1);
+}
+\end{verbatim}
+
+\subsection{For-Each Loops}
+For-each loops allow you to directly loop through each item in a list of items (like an array or ArrayList) and perform some action with each item. The syntax looks like this:
+\begin{verbatim}
+for (String inventoryItem : inventoryItems) {
+  System.out.println(inventoryItem);
+}
+\end{verbatim}
+We can read the \verb|:| as ``in'' like this: for each \verb|inventoryItem| (which should be a \verb|String|) in \verb|inventoryItems|, print \verb|inventoryItem|
+
+
 \section{Miscellaneous}
 
 \begin{enumerate}
+\item 从JDK5.0开始，不再叫J2SE, 改名为Java SE了，因为那个2已经失去了其应该有的意义
+
 \item MySql用得比较多
 
-\item 在谈到Java开发人员经常使用的Java版本时，Java 8是胜利者。但应该记住，在2019年1月之后，Java 8将不再有公开更新。谈到Java开发人员最经常使用的IDE/编辑器时，IntelliJ IDEA看起来是明显的赢家。 \url{https://www.sohu.com/a/235541971_100159565}
+\item 在谈到Java开发人员经常使用的Java版本时，Java 8是胜利者。但应该记住，在2019年1月之后，Java 8（也就是jdk8） 将不再有公开更新。谈到Java开发人员最经常使用的IDE/编辑器时，IntelliJ IDEA看起来是明显的赢家。 \url{https://www.sohu.com/a/235541971_100159565}
 
 \item winscp下载地址：\url{https://winscp.net/eng/download.php}
 
