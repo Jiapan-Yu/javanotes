@@ -361,6 +361,30 @@ for (String inventoryItem : inventoryItems) {
 We can read the \verb|:| as ``in'' like this: for each \verb|inventoryItem| (which should be a \verb|String|) in \verb|inventoryItems|, print \verb|inventoryItem|
 
 
+\section{String Methods}
+In this lesson, we will go over several string methods:\\
+\verb|length()  concat()  equals()  indexOf()  charAt()  substring()|\\
+\verb|toUpperCase() / toLowerCase()|
+
+In theory, the \verb|length| of a String is the same as the Unicode units of the String. For example, escape sequences such as \verb|\n| count as only one character.
+
+\verb|concat()| doesn't actually change the value of the original string.
+
+If the \verb|indexOf()| doesn't find what it's looking for (could be a letter or an entire substring), it'll return a $-1$.
+
+The \verb|charAt()| method returns the character located at a \verb|String|'s specified index, if the index is out of str's range, it will produce an error.
+
+\verb|substring()| returns a string that is a substring of this string. There're two variants:
+\begin{itemize}
+\item \verb|substring(int beginIndex)|, eg. \verb|"unhappy".substring(2) returns "happy"|
+
+\item \verb|substring(int beginIndex, int endIndex)|, the substring begins at the specified \verb|beginIndex| and extends to the character at index \verb|endIndex - 1|\\ eg. \verb|"smiles".substring(1, 5) returns "mile"|
+
+\end{itemize}
+
+\verb|toUpperCase() / toLowerCase()| return the string value converted to uppercase or lowercase. A good use of this functionality is to ensure consistency of the data you store in a database.
+
+
 \section{Miscellaneous}
 
 \begin{enumerate}
