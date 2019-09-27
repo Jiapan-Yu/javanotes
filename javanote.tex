@@ -385,6 +385,105 @@ The \verb|charAt()| method returns the character located at a \verb|String|'s sp
 \verb|toUpperCase() / toLowerCase()| return the string value converted to uppercase or lowercase. A good use of this functionality is to ensure consistency of the data you store in a database.
 
 
+\section{Inheritance and Polymorphism}
+There are several terms you'll encounter frequently:
+\begin{itemize}
+\item \textit{Parent class}, \textit{superclass}, and \textit{base class} refer to the class that another class inherits from (like Shape)
+
+\item \textit{Child class}, \textit{subclass}, and \textit{derived class} refer to a class that inherits from another class (like Triangle)
+
+\end{itemize}
+
+\subsection{Inheritance in Practice}
+We use the keyword \verb|extends| like this:
+\begin{verbatim}
+class Shape {
+
+  // Shape class members
+
+}
+
+class Triangle extends Shape {
+
+  // additional Triangle class members
+
+}
+\end{verbatim}
+
+child class inherits its parent's fields and methods
+
+\subsection{Inheriting the Constructor}
+child class inherits its parent's constructor as well. 
+
+Using the \verb|super()| method which acts like the parent constructor inside the child class constructor. See java.pdf for an example.
+
+It is also possible to just completely override a parent class constructor by writing a new constructor for the child class:
+\begin{verbatim}
+class Triangle extends Shape {
+  Triangle() {
+    this.numSides = 3;
+  }
+
+  // additional Triangle class members
+
+}
+\end{verbatim}
+Turns out I still have to add \verb|super()| with related params first, then override \verb|numSides| field by writing \verb|this.numSides = 3;| after \verb|super()|.
+
+\subsection{Parent Class Aspect Modifiers}
+A child class does not inherit its parent's \verb|private| members
+
+\includegraphics[width=12cm]{pics/accessModifiers.png}
+
+package means files are under the same folder.
+
+In addition to access modifiers, there's another way to establish how child classes can interact with inherited parent class members: using the \verb|final| keyword. If we add \verb|final| before a parent class method's access modifier, we disallow any child classes from changing that method. This is helpful in limiting bugs that might occur from modifying a particular method.
+
+\subsection{Method Overriding}
+One common use of polymorphism with Java classes is something we mentioned earlier -- \textit{overriding} parent class methods in a child class.
+
+Method Overriding: see java.pdf for an example. In order to properly override parent's methods {\color{red}(including constructor method using \verb|super()|)}, following has to be satisfied
+\begin{itemize}
+\item Method name
+
+\item Return type
+
+\item Number and type of parameters
+
+\end{itemize}
+does child's \verb|super()| has to satisfy the third item in order to properly override its parent's constructor method? Yes (concluded from the dinner project)
+
+\subsection{Using a Child Class as its Parent Class}
+An important facet of polymorphism is the ability to use a child class object where an object of its parent class is expected. See java.pdf for an example.
+
+Method overriding is handled at runtime. If BiangBiang class have a method that Noodle class does	not have, then \verb|biangBiang| can not use that method, but can use any methods inside Noodle class.
+
+\subsection{Child Classes in Arrays and ArrayLists}
+Usually, when we create an array or an ArrayList, the list items all need to be the same type. But polymorphism puts a new spin on what is considered the same type...
+
+In fact, we can put instances of different classes that share a parent class together in an array or \verb|ArrayList|! For example, let's say we have a \verb|Monster| parent class with a few child classes: \verb|Vampire|, \verb|Werewolf|, and \verb|Zombie|. We can set up an array with instances of each:
+\begin{verbatim}
+Monster dracula, wolfman, zombie1;
+
+dracula = new Vampire();
+wolfman = new Werewolf();
+zombie1 = new Zombie();
+
+Monster[] monsters = {dracula, wolfman, zombie1};
+\end{verbatim}
+
+We can even iterate through the list of items — regardless of subclass — and perform the same action with each item:
+\begin{verbatim}
+for (Monster monster : monsters) {
+  monster.attack();
+}
+\end{verbatim}
+In the code above, we were able to call \verb|attack()| on each monster in \verb|monsters| despite the fact that, in the for-each loop, monster is declared as the parent class type \verb|Monster|.
+
+See java.pdf for an example.
+
+
+
 \section{Miscellaneous}
 
 \begin{enumerate}
