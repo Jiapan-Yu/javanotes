@@ -483,6 +483,76 @@ In the code above, we were able to call \verb|attack()| on each monster in \verb
 See java.pdf for an example.
 
 
+\section{Debugging}
+In Java, there are many different ways of classifying errors, but they can be boiled down to three categories:
+\begin{itemize}
+\item \textbf{Syntax errors}: Errors found by the compiler.
+
+\item \textbf{Run-time errors}: Errors that occur when the program is running.
+
+\item \textbf{Logic errors}: Errors found by the programmer looking for the causes of erroneous results.
+
+\end{itemize}
+
+\subsection{Run-time Errors}
+If our program has no compile-time errors, it'll run. Errors which happen during program execution (run-time) after successful compilation are called run-time errors.
+
+Some common run-time errors:
+\begin{itemize}
+\item Division by zero also known as division error
+
+\item Trying to open a file that doesn't exist
+
+\end{itemize}
+
+\subsection{Exceptions}
+\begin{itemize}
+\item \verb|ArithmeticException|: Something went wrong during an arithmetic operation; for example, division by zero.
+
+\item \verb|NullPointerException|: You tried to access an instance variable or invoke a method on an object that is currently \verb|null|.
+
+\item \verb|ArrayIndexOutOfBoundsException|: The index you are using is either negative or greater than the last index of the array (i.e., \verb|array.length-1|).
+
+\item \verb|FileNotFoundException|: Java didn't find the file it was looking for.
+
+\end{itemize}
+
+\subsection{Exception Handling}
+One way to handle exceptions is using the \verb|try/catch|:
+\begin{itemize}
+\item The \verb|try| statement allows you to define a block of code to be tested for errors while it is being executed.
+
+\item The \verb|catch| statement allows you to define a block of code to be executed if an error occurs in the try block.
+
+\end{itemize}
+\begin{verbatim}
+public class Debug {
+  public static void main(String[] args) {    
+    int width = 0;
+    int length = 40;
+    
+    try {
+      int ratio = length / width;
+    } catch (ArithmeticException e) {
+      System.err.println(e.getMessage());
+    }    
+  }  
+}
+\end{verbatim}
+An exception handler is considered appropriate if the type of the exception object thrown matches the type that can be handled by the handler.
+
+You can also chain exceptions together:
+\begin{verbatim}
+try {
+  //  Block of code to try
+} catch (NullPointerException e) {
+  //  Code to handle a NullPointerException
+} catch (ArithmeticException e) {
+  //  Code to handle an ArithmeticException
+}
+\end{verbatim}
+
+
 
 \section{Miscellaneous}
 
