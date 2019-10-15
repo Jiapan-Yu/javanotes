@@ -21,6 +21,9 @@
 
 \newminted{java}{gobble=0,linenos=false,frame=single,breaklines=true,obeytabs=true,tabsize=2,escapeinside=\#\#}
 \newminted{html}{gobble=0,linenos=false,frame=single,breaklines=true}
+\newminted{sql}{gobble=0,linenos=false,frame=single,breaklines=true,obeytabs=true,tabsize=2,escapeinside=\#\#}
+
+\usemintedstyle[sql]{vs} % autumn
 
 \begin{document}
 %\begin{CJK}{UTF8}{gbsn}
@@ -28,6 +31,20 @@
 \selectfont
 
 \begin{enumerate}
+
+\item sql: Combining AND, OR and NOT
+
+The following SQL statement selects all fields from ``Customers" where country is NOT ``Germany" and NOT ``USA":
+\begin{sqlcode}
+SELECT * FROM Customers
+WHERE NOT Country='Germany' AND NOT Country='USA';
+\end{sqlcode}
+
+下面的sql语句不行
+\begin{sqlcode}
+SELECT * FROM Customers 
+WHERE NOT (Country='Germany' AND Country='USA');
+\end{sqlcode}
 
 \item Child Classes in Arrays and ArrayLists\\
 Noodle.java
@@ -110,8 +127,10 @@ class Pho extends Noodle {
 run, the result will be:
 \begin{verbatim}
 Boil spaghetti for 8 - 12 minutes and add sauce, cheese, or oil and garlic.
-Boil ramen for 5 minutes in broth, then add meat, mushrooms, egg, and vegetables.
-Soak pho for 1 hour, then boil for 1 minute in broth. Then garnish with cilantro and jalapeno.
+Boil ramen for 5 minutes in broth, then add meat, mushrooms, egg, and 
+vegetables.
+Soak pho for 1 hour, then boil for 1 minute in broth. Then garnish with 
+cilantro and jalapeno.
 \end{verbatim}
 
 \item Using a Child Class as its Parent Class\\
