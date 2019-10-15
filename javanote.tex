@@ -26,8 +26,34 @@
 \item Select Mark Directory as $\rightarrow$ Test Source Root
 \end{enumerate}
 
+\item pre or post decrement won't work in a regular for loop at the iteration expression part
+\begin{verbatim}
+for (int y = 4; y > 2; y--) {
+  System.out.println(y);
+}
+\end{verbatim}
+and
+\begin{verbatim}
+for (int y = 4; y > 2; --y) {
+  System.out.println(y);
+}
+\end{verbatim}
+produce the same result
 
 \end{itemize}
+
+
+\section{FAQ}
+\begin{enumerate}
+\item 在constructor里面使用this和不使用this都一样吗？
+
+\item ArrayList的type如果是Integer，那么remove的时候写数字是移除对应的值还是对应index上的值？
+
+移除其对应index上的值。因为写数字则其type为int类型，而非Integer类型，如果要移除对应的值则需要 \verb|cast| 为Integer类型。{\color{red}类型不同为什么用 \verb|cast| operator成功了呢？}
+
+\item 
+
+\end{enumerate}
 
 
 \section{Hello World}
@@ -552,6 +578,25 @@ try {
 }
 \end{verbatim}
 
+
+\section{sql}
+\subsection{Combining AND, OR and NOT}
+The following SQL statement selects all fields from ``Customers" where country is NOT ``Germany" and NOT ``USA":
+\begin{verbatim}
+SELECT * FROM Customers
+WHERE NOT Country='Germany' AND NOT Country='USA';
+\end{verbatim}
+
+下面的sql语句不行
+\begin{verbatim}
+SELECT * FROM Customers 
+WHERE NOT (Country='Germany' AND Country='USA');
+\end{verbatim}
+
+see java.pdf for a colorful code example.
+
+
+\href{http://www.nthuleen.com/teach/misc/typingumlauts.html}{Typing Umlauts on a PC and Mac}
 
 
 \section{Miscellaneous}
