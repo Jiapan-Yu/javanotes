@@ -45,7 +45,7 @@ produce the same result
 
 \section{FAQ}
 \begin{enumerate}
-\item 在constructor里面使用this和不使用this都一样吗？
+\item 在constructor里面使用this和不使用this都一样吗？（在普通函数里面使用 instance fields 的时候不用this）
 
 \item ArrayList的type如果是Integer，那么remove的时候写数字是移除对应的值还是对应index上的值？
 
@@ -464,6 +464,25 @@ A child class does not inherit its parent's \verb|private| members
 package means files are under the same folder.
 
 In addition to access modifiers, there's another way to establish how child classes can interact with inherited parent class members: using the \verb|final| keyword. If we add \verb|final| before a parent class method's access modifier, we disallow any child classes from changing that method. This is helpful in limiting bugs that might occur from modifying a particular method.
+
+\textbf{Note:} If a class has no modifier (the default, also known as package-private), it is visible only within its own package.
+
+The following figure shows the four classes in this example and how they are related.
+
+\includegraphics[width=8cm]{pics/classes-access.png}
+
+The following table shows where the members of the Alpha class are visible for each of the access modifiers that can be applied to them.
+\begin{table}[htbp]
+\centering
+\caption{Visibility}
+\begin{tabular}{lllll}
+Modifier & Alpha & Beta & AlphaSub & Gamma \\ \hline
+public & Y & Y & Y & Y \\ \hline
+protected & Y & Y & Y & N \\ \hline
+no modifier & Y & Y & N & N \\ \hline
+private & Y & N & N & N \\ \hline
+\end{tabular}
+\end{table}
 
 \subsection{Method Overriding}
 One common use of polymorphism with Java classes is something we mentioned earlier -- \textit{overriding} parent class methods in a child class.
