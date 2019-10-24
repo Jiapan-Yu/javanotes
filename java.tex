@@ -32,6 +32,33 @@
 
 \begin{enumerate}
 
+\item sql: RIGHT JOIN
+
+The following SQL statement will return all employees, and any orders they might have placed:
+\begin{sqlcode}
+SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
+FROM Orders
+RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+ORDER BY Orders.OrderID;
+\end{sqlcode}
+\textbf{Note:} The RIGHT JOIN keyword returns all records from the right table (Employees), even if there are no matches in the left table (Orders).
+
+\item sql: BETWEEN with IN Example
+
+The following SQL statement selects all products with a price BETWEEN 10 and 20. In addition; do not show products with a CategoryID of 1, 2, or 3:
+\begin{sqlcode}
+SELECT * FROM Products
+WHERE Price BETWEEN 10 AND 20
+AND NOT CategoryID IN (1,2,3);
+\end{sqlcode}
+
+Following sql code works as well
+\begin{sqlcode}
+SELECT * FROM Products
+WHERE Price BETWEEN 10 AND 20
+AND CategoryID NOT IN (1,2,3);
+\end{sqlcode}
+
 \item sql: Combining AND, OR and NOT
 
 The following SQL statement selects all fields from ``Customers" where country is NOT ``Germany" and NOT ``USA":
@@ -450,7 +477,7 @@ public class Car {
 \begin{javacode}
 public class Store {
   
-  // new method: constructor!
+  // constructor!
   public Store() {
     System.out.println("I am inside the constructor method.");
   }
