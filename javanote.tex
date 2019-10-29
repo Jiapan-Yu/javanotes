@@ -51,7 +51,9 @@ produce the same result
 
 移除其对应index上的值。因为写数字则其type为int类型，而非Integer类型，如果要移除对应的值则需要 \verb|cast| 为Integer类型。{\color{red}类型不同为什么用 \verb|cast| operator成功了呢？}
 
-\item 
+\item 在main方法里面可以直接使用 non-static instance variables 吗？
+
+不行。因为main方法是 static method，不能直接使用 non-static instance variables
 
 \end{enumerate}
 
@@ -285,6 +287,8 @@ To represent dynamic lists, we can use Java's ArrayLists. ArrayLists allow us to
 \verb|ArrayList<String> babyNames;|
 
 We use angle brackets \verb|<| and \verb|>| to declare the type of the \verb|ArrayList|. These symbols are used for \textit{generics}.
+
+See page 287 of ``Head First Java 2.0".
 
 Generics are a Java construct that allows us to define classes and objects as parameters of an \verb|ArrayList|. For this reason, we can't use primitive types in an \verb|ArrayList|:
 \begin{verbatim}
@@ -619,6 +623,14 @@ See java.pdf for an example.
 
 \subsection{RIGHT JOIN}
 See java.pdf for an example.
+
+\subsection{SELECT INTO}
+\verb|SELECT INTO| can also be used to create a new, empty table using the schema of another. Just add a WHERE clause that causes the query to return no data:
+\begin{verbatim}
+SELECT * INTO newtable
+FROM oldtable
+WHERE 1 = 0;
+\end{verbatim}
 
 
 
