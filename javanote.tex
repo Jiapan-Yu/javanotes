@@ -55,6 +55,19 @@ produce the same result
 
 不行。因为main方法是 static method，不能直接使用 non-static instance variables
 
+\item 下面程序在cmd里面打印的时候出现乱码，另外第三个参数好像打印错误问题
+\begin{verbatim}
+import java.util.Date;
+
+public class TestFormats {
+  public static void main (String [] args) {		
+	  Date today = new Date();
+	  System.out.printf(String.format("%tA, %tB %tC", today, today, 
+    today));
+  }
+}
+\end{verbatim}
+
 \end{enumerate}
 
 
