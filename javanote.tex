@@ -616,6 +616,23 @@ try {
 
 
 \section{sql from Codecademy}
+\subsection{Setting Up SQLite}
+Binaries for SQLite can be installed at the \href{https://www.sqlite.org/download.html}{SQLite Download} page.
+
+For Windows machines:
+\begin{enumerate}
+\item Download the \verb|sqlite-tools-win32-x86-3200100.zip| file and unzip it.
+
+\item From your git-bash terminal, open the directory of the unzipped folder with \verb|cd ~/Downloads/sqlite-tools-win32-x86-3200100/|.
+
+\item Try running sqlite with the command \verb|winpty ./sqlite3.exe|. If that command opens a \verb|sqlite>| prompt, congratulations! You've installed SQLite.
+
+\end{enumerate}
+We want to be able to access this command quickly from elsewhere, so we're going to create an alias to the command. Exit the \verb|sqlite>| prompt by typing in \verb|Ctrl + C|, and in the same git-bash terminal without changing folders, run these commands:\\
+\verb|echo "alias sqlite3=\"winpty ${PWD}/sqlite3.exe\"" >> ~/.bashrc|\\
+and\\
+\verb|source ~/.bashrc|\\
+The first command will create the alias \verb|sqlite3| that you can use to open a database. The second command will refresh your terminal so that you can start using this command. Try typing in the command \verb|sqlite3 newdb.sqlite|. If you're presented with a \verb|sqlite>| prompt, you've successfully created the \verb|sqlite3| command for your terminal. Enter \verb|Ctrl + C| to quit. You can also exit by typing \verb|.exit| in the prompt and pressing \verb|Enter|.
 
 
 \section{sql from w3schools}
