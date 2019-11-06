@@ -634,6 +634,14 @@ and\\
 \verb|source ~/.bashrc|\\
 The first command will create the alias \verb|sqlite3| that you can use to open a database. The second command will refresh your terminal so that you can start using this command. Try typing in the command \verb|sqlite3 newdb.sqlite|. If you're presented with a \verb|sqlite>| prompt, you've successfully created the \verb|sqlite3| command for your terminal. Enter \verb|Ctrl + C| to quit. You can also exit by typing \verb|.exit| in the prompt and pressing \verb|Enter|.
 
+\subsection{How is ALTER different from UPDATE?}
+Although similar in the sense that both statements will modify a table, these statements are quite different.
+
+The \verb|ALTER| statement is used to modify columns. With \verb|ALTER|, you can add columns, remove them, or even modify them.
+
+The \verb|UPDATE| statement is used to modify rows. However, \verb|UPDATE| can only update a row, and cannot remove or add rows.
+
+
 
 \section{sql from w3schools}
 \subsection{Combining AND, OR and NOT}
