@@ -45,7 +45,7 @@ ORDER BY Orders.OrderID;
 
 \item sql: BETWEEN with IN Example
 
-The following SQL statement selects all products with a price BETWEEN 10 and 20. In addition; do not show products with a CategoryID of 1, 2, or 3:
+The following SQL statement selects all products with a price BETWEEN 10 and 20 (inclusive of the second number). In addition; do not show products with a CategoryID of 1, 2, or 3:
 \begin{sqlcode}
 SELECT * FROM Products
 WHERE Price BETWEEN 10 AND 20
