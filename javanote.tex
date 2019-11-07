@@ -641,6 +641,63 @@ The \verb|ALTER| statement is used to modify columns. With \verb|ALTER|, you can
 
 The \verb|UPDATE| statement is used to modify rows. However, \verb|UPDATE| can only update a row, and cannot remove or add rows.
 
+\subsection{LIMIT}
+\verb|LIMIT| always goes at the very end of the query. Also, it is not supported in all SQL databases.
+
+write a query that returns the top 3 highest rated movies
+\begin{verbatim}
+SELECT * FROM movies
+ORDER BY imdb_rating DESC
+LIMIT 3;
+\end{verbatim}
+
+\subsection{CASE}
+Select the name column and use a CASE statement to create the second column that is:
+\begin{itemize}
+\item ‘Chill’ if genre = 'romance'
+
+\item ‘Warm’ if genre = 'comedy'
+
+\item ‘Intense’ in all other cases
+
+\end{itemize}
+\begin{verbatim}
+SELECT name,
+  CASE
+    WHEN genre = 'romance' THEN  'Chill'
+    WHEN genre = 'comedy' THEN  'Warm'
+    ELSE 'Intense'
+  END AS 'Mood'
+FROM movies;
+\end{verbatim}
+If we don't use \verb|AS|, then from CASE till END (including) will be the column name.
+
+\subsection{FAQ}
+\begin{enumerate}
+\item \href{https://discuss.codecademy.com/t/when-using-a-case-statement-do-the-values-for-then-have-to-be-a-single-type/351538}{When using a CASE statement, do the values for THEN have to be a single type?}
+\begin{verbatim}
+SELECT name,
+  CASE
+    WHEN genre = 'romance' THEN  'Chill'
+    WHEN genre = 'comedy' THEN  123.23
+    ELSE 'Intense'
+  END AS 'Mood'
+FROM movies;
+\end{verbatim}
+同一个column下面的 data type 可以不一样吗？
+
+\item Does COUNT() include duplicate values of a column?
+
+Yes, when using the \verb|COUNT()| function on a column in SQL, it will include duplicate values by default. It essentially counts all rows for which there is a value in the column.
+
+If you wanted to count only the unique values in a column, then you can utilize the \verb|DISTINCT| clause within the \verb|COUNT()| function.
+\begin{verbatim}
+SELECT COUNT(DISTINCT category)
+FROM fake_apps;
+\end{verbatim}
+
+\end{enumerate}
+
 
 
 \section{sql from w3schools}
