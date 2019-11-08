@@ -672,6 +672,15 @@ FROM movies;
 \end{verbatim}
 If we don't use \verb|AS|, then from CASE till END (including) will be the column name.
 
+\subsection{GROUP BY}
+The \verb|GROUP BY| statement comes after any \verb|WHERE| statements, but before \verb|ORDER BY| or \verb|LIMIT|.
+
+\subsection{HAVING}
+\href{https://www.codecademy.com/courses/learn-sql/lessons/aggregate-functions/exercises/having?action=resume_content_item}{HAVING}
+
+\verb|HAVING| statement always comes after \verb|GROUP BY|, but before \verb|ORDER BY| and \verb|LIMIT|.
+
+
 \subsection{FAQ}
 \begin{enumerate}
 \item \href{https://discuss.codecademy.com/t/when-using-a-case-statement-do-the-values-for-then-have-to-be-a-single-type/351538}{When using a CASE statement, do the values for THEN have to be a single type?}
@@ -686,7 +695,7 @@ FROM movies;
 \end{verbatim}
 同一个column下面的 data type 可以不一样吗？
 
-\item Does COUNT() include duplicate values of a column?
+\item Does \verb|COUNT()| include duplicate values of a column?
 
 Yes, when using the \verb|COUNT()| function on a column in SQL, it will include duplicate values by default. It essentially counts all rows for which there is a value in the column.
 
@@ -694,6 +703,34 @@ If you wanted to count only the unique values in a column, then you can utilize 
 \begin{verbatim}
 SELECT COUNT(DISTINCT category)
 FROM fake_apps;
+\end{verbatim}
+
+\item When do we use \verb|COUNT()| or \verb|SUM()|?
+
+Although they might appear to perform a similar task, the \verb|COUNT()| and \verb|SUM()| functions have very different uses.
+
+\verb|COUNT()| is used to take a name of a column, and counts the number of non-empty values in that column. \verb|COUNT()| does not take into account the actual values stored, and only cares if they have a non-empty value. Each row is essentially counted as \verb|1| towards the total count.
+
+On the other hand, \verb|SUM()| takes a column name, and returns the sum of all values in the column, meaning that it must take into account the actual values stored.
+
+In general, use \verb|COUNT()| when you want to count how many rows contain a non-empty value for a specified column. Use \verb|SUM()| when you want to get the total sum of all values in a column.
+
+\item Does the \verb|ROUND()| function round up?
+
+When using the \verb|ROUND()| function, you can provide a second argument, which is the precision, or number of decimal places to round the number on.
+
+In SQLite, rounding is done by rounding up if the next decimal value is 5, and rounds down if the value is less than 5.
+
+For example,
+\begin{verbatim}
+/* This will result in 4.0 */
+SELECT ROUND(3.5, 0);
+
+/* This will result in 6.4 */
+SELECT ROUND(6.42, 1);
+
+/* This will result in 6.0 */
+SELECT ROUND(6.42, 0);
 \end{verbatim}
 
 \end{enumerate}
