@@ -710,6 +710,33 @@ JOIN customers
   ON orders.customer_id = customers.customer_id;
 \end{verbatim}
 
+\subsection{Primary Key vs Foreign Key}
+Recall that we had three tables: \verb|orders|, \verb|subscriptions|, and \verb|customers|.
+
+Each of these tables has a column that uniquely identifies each row of that table:
+\begin{itemize}
+\item \verb|order_id| for \verb|orders|
+
+\item \verb|subscription_id| for \verb|subscriptions|
+
+\item \verb|customer_id| for \verb|customers|
+
+\end{itemize}
+These special columns are called \verb|primary keys|.
+
+Primary keys have a few requirements:
+\begin{itemize}
+\item None of the values can be \verb|NULL|.
+
+\item Each value must be unique (i.e., you can't have two customers with the same \verb|customer_id| in the \verb|customers| table).
+
+\item A table can not have more than one primary key column.
+
+\end{itemize}
+
+When the primary key for one table appears in a different table, it is called a \verb|foreign key|.
+
+\textit{Why is this important?} The most common types of joins will be joining a foreign key from one table with the primary key from another table.
 
 \subsection{FAQ}
 \begin{enumerate}
