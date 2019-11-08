@@ -680,6 +680,36 @@ The \verb|GROUP BY| statement comes after any \verb|WHERE| statements, but befor
 
 \verb|HAVING| statement always comes after \verb|GROUP BY|, but before \verb|ORDER BY| and \verb|LIMIT|.
 
+\subsection{Combining Tables with SQL}
+If we want to combine orders and customers, we would type:
+\begin{verbatim}
+SELECT *
+FROM orders
+JOIN customers
+  ON orders.customer_id = customers.customer_id;
+\end{verbatim}
+Let's break down this command:
+\begin{enumerate}
+\item The first line selects all columns from our combined table. If we only want to select certain columns, we can specify which ones we want.
+
+\item The second line specifies the first table that we want to look in, \verb|orders|
+
+\item The third line uses \verb|JOIN| to say that we want to combine information from \verb|orders| with \verb|customers|.
+
+\item The fourth line tells us how to combine the two tables. We want to match \verb|orders| table's \verb|customer_id| column with \verb|customers| table's \verb|customer_id| column.
+
+\end{enumerate}
+Because column names are often repeated across multiple tables, we use the syntax \verb|table_name.column_name| to be sure that our requests for columns are unambiguous. In our example, we use this syntax in the \verb|ON| statement, but we will also use it in the \verb|SELECT| or any other statement where we refer to column names.
+
+For example: Instead of selecting \textit{all} the columns using \verb|*|, if we only wanted to select \verb|orders| table's \verb|order_id| column and \verb|customers| table's \verb|customer_name| column, we could use the following query:
+\begin{verbatim}
+SELECT orders.order_id,
+  customers.customer_name
+FROM orders
+JOIN customers
+  ON orders.customer_id = customers.customer_id;
+\end{verbatim}
+
 
 \subsection{FAQ}
 \begin{enumerate}
