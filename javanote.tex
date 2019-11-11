@@ -738,6 +738,81 @@ When the primary key for one table appears in a different table, it is called a 
 
 \textit{Why is this important?} The most common types of joins will be joining a foreign key from one table with the primary key from another table.
 
+\subsection{CROSS JOIN}
+A more common usage of \verb|CROSS JOIN| is when we need to compare each row of a table to a list of values.
+
+Let's return to our newspaper subscriptions. This table contains two columns that we haven't discussed yet:
+\begin{itemize}
+\item \verb|start_month|: the first month where the customer subscribed to the print newspaper (i.e., 2 for February)
+
+\item \verb|end_month|: the final month where the customer subscribed to the print newspaper
+
+\end{itemize}
+We wanted to know how many users were subscribed during each month of the year:
+\begin{verbatim}
+SELECT month, COUNT(*)
+FROM newspaper
+CROSS JOIN months
+WHERE start_month <= month AND end_month >= month
+GROUP BY month;
+\end{verbatim}
+
+\subsection{UNION}
+Sometimes we just want to stack one dataset on top of the other. Well, the \verb|UNION| operator allows us to do that.
+
+SQL has strict rules for appending data:
+\begin{itemize}
+\item Tables must have the same number of columns.
+
+\item The columns must have the same data types in the same order as the first table.
+
+\end{itemize}
+
+Use UNION to stack the newspaper table on top of the online table:
+\begin{verbatim}
+SELECT * FROM online
+UNION
+SELECT * FROM newspaper;
+\end{verbatim}
+
+\subsection{WITH}
+A WITH clause syntax
+\begin{verbatim}
+WITH previous_results AS (
+   SELECT ...
+   ...
+   ...
+   ...
+)
+SELECT *
+FROM previous_results
+JOIN customers
+  ON _____ = _____;
+\end{verbatim}
+\begin{itemize}
+\item The \verb|WITH| statement allows us to perform a separate query (such as aggregating customer's subscriptions)
+
+\item \verb|previous_results| is the alias that we will use to reference any columns from the query inside of the \verb|WITH| clause
+
+\item We can then go on to do whatever we want with this temporary table (such as join the temporary table with another table)	
+
+\end{itemize}
+Essentially, we are putting a whole first query inside the parentheses \verb|()| and giving it a name. After that, we can use this name as if it's a table and write a new query using the first query.
+
+Get subscriptions per \verb|customer_id|, then \verb|previous_query| table \verb|JOIN| \verb|customers| table to get the \verb|customer_name|
+\begin{verbatim}
+WITH previous_query AS (
+  SELECT customer_id,
+    COUNT(subscription_id) AS 'subscriptions'
+  FROM orders
+  GROUP BY customer_id
+)
+SELECT customers.customer_name, previous_query.subscriptions
+FROM previous_query
+JOIN customers
+ON previous_query.customer_id = customers.customer_id;
+\end{verbatim}
+
 \subsection{FAQ}
 \begin{enumerate}
 \item \href{https://discuss.codecademy.com/t/when-using-a-case-statement-do-the-values-for-then-have-to-be-a-single-type/351538}{When using a CASE statement, do the values for THEN have to be a single type?}
@@ -789,6 +864,22 @@ SELECT ROUND(6.42, 1);
 /* This will result in 6.0 */
 SELECT ROUND(6.42, 0);
 \end{verbatim}
+
+\item In sql-population-queries-part-ii-starting project, when asking 'What is the average population of Poland during the time period covered by this dataset?' I gave the following answer
+\begin{verbatim}
+WITH referenceTable4 AS (
+	SELECT id, name
+	FROM countries
+	WHERE name = 'Poland'
+)
+SELECT name, AVG(population)
+FROM referenceTable4
+JOIN population_years
+ON referenceTable4.id = population_years.country_id
+-- WHERE year LIKE '[2000-2010]';
+WHERE year BETWEEN 2000 AND 2010;
+\end{verbatim}
+why using \verb|like| clause doesn't work?
 
 \end{enumerate}
 
