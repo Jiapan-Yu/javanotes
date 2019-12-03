@@ -20,6 +20,8 @@
 
 \section{Caveats}
 \begin{itemize}
+\item windows系统用户名设置为joshua即可，如果设置为 Joshua Yu 后面可能有时添加路径会不成功
+
 \item ``Intellij IDEA run button grayed out''?
 \begin{enumerate}
 \item Right click the folder containing your source
@@ -825,7 +827,8 @@ SELECT name,
   END AS 'Mood'
 FROM movies;
 \end{verbatim}
-同一个column下面的 data type 可以不一样吗？
+同一个column下面的 data type 可以不一样吗？\\
+See \url{https://www.sqlite.org/faq.html#q3} might help.
 
 \item Does \verb|COUNT()| include duplicate values of a column?
 
