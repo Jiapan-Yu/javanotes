@@ -1,5 +1,8 @@
-*
+# / is mandatory
+/*
 !.gitignore
-!pics/*
+# however !pics/* won't work as expected
+# seems like negative exclusion exclamation mark shouldn't combine asterisk
+!pics/
 !java.tex
 !javanote.tex
